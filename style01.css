@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
+
+/* Font Family  */
+@font-face { font-family: 'Keshiki';  src: url("font-family/Keshiki/Sdasian-WyDon.ttf");  }
+@font-face { font-family: 'sd-asian'; src: url("font-family/SD-Asian/Sdasian-WyDon.ttf"); }
+@font-face { font-family: 'Poppins'; src: url("font-family/Poppins/Poppins-Medium.ttf");}
+
+*, *:afater, *:before {
+    margin: 0;
+    padding: 0;
+    transition: .3s;
+    box-sizing: border-box;
+    color: #b300ff;
+}
+
+.clock {
+  --clock-size: 360px;
+  width: var(--clock-size);
+  height: var(--clock-size);
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  border-radius: 50%;
+  right: 65%;
+  bottom: 25%;
+}
+
+.spike {
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  background: rgb(255, 230, 0);
+  line-height: 20px;
+  transform-origin: 50%;
+  z-index: 5;
+  inset: 0;
+  margin: auto;
+  font-style: normal;
+  transform: rotate(var(--rotate)) translateX(var(--dail-size));
+}
+
+.spike:nth-child(5n+1) {
+  box-shadow: -7px 0 rgb(254, 254, 254);
+}
+
+.spike:nth-child(5n+1):after {
+  content: attr(data-i);
+  position: absolute;
+  right: 22px;
+  top: -10px;
+  transition: 1s linear;
+  transform: rotate(calc( var(--dRotate) - var(--rotate)));
+}
+
+.seconds {
+  --dRotate: 0deg;
+  --dail-size: calc((var(--clock-size)/ 2) - 8px);
+  font-weight: 800;
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  transform: rotate(calc( -1 * var(--dRotate)));
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  transition: 1s linear;
+}
+
+.minutes {
+  --dail-size: calc((var(--clock-size)/ 2) - 65px);
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+  transform: rotate(calc( -1 * var(--dRotate)));
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  transition: 1s linear;
+}
+
+.stop-anim {
+  transition: 0s linear;
+}
+
+.stop-anim .spike:after {
+  transition: 0s linear !important;
+}
+
+.hour {
+  font-size: 70px;
+  font-weight: 1000;
+  position: absolute;
+  color: rgb(255, 255, 255);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.minute {
+  font-size: 40px;
+  font-weight: 1000;
+  position: absolute;
+  color: rgb(255, 255, 255);
+  background-color: auto;
+  z-index: 10;
+  right: calc(var(--clock-size)/ 4.5);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.minute:after {
+  content: "";
+  position: absolute;
+  border: 4px solid rgb(255, 230, 0);
+  border-right: none;
+  height: 50px;
+  left: -10px;
+  top: 50%;
+  border-radius: 40px 0 0 40px;
+  width: calc(var(--clock-size)/ 3.25);
+  transform: translatey(-50%);
+}
+
+video {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: -1;
+    transition: 1s;
+}
+
+.container {
+    position: absolute;
+    right: 14rem;
+    top: 7rem;
+    margin: auto;
+}
+
+.heading {
+    font-size: 7rem;
+    color: white;
+    font-family: 'sd-asian';
+}
+
+.fug {
+    font-family: 'Poppins';
+    font-size: 5rem;
+    color: white;
+    position: absolute;
+    right: 15rem;
+    top: 8rem;
+}
+
+.con {
+    font-family: 'Poppins';
+    font-size: 2rem;
+    color: white;
+    position: absolute;
+    right: 17rem;
+    top: 20rem;
+}
+
+.social-links {
+    position: absolute;
+    right: 24rem;
+    top: 27rem;
+    margin-top: 6rem;
+    font-size: 250%;
+}
+
+.social-links a {
+    height: 60px;
+    width: 60px;
+    margin: 0 25px;
+    border-radius: 99px;
+    display:inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    backdrop-filter: blur(160px);
+    color: black;
+    background: #c624f71e;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.social-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0%;
+    background: #f15405;
+    z-index: -1;
+}
+
+.social-links a:hover::after { 
+    height: 100%;
+}
+
+.logo {
+    padding: 12px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Keshiki';
+    text-decoration: none;
+    font-size: 2rem;
+    color: white;
+}
